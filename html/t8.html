@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base/>
+	<title>Students</title>
+	<script src="../js/angular.min.js"></script>
+	<style type="text/css">
+		.selected {
+			background-color: lightgreen;
+		}
+	</style>
+</head>
+<body>
+	<div ng-app="StuModule">
+		<div ng-controller='StudentListController'>
+			<div ng-repeat='student in students' ng-click='select($index)' ng-class="{selected: $index==selectix}">
+				{{student.name}}
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var stuModule = angular.module('StuModule',[]);
+		stuModule.factory("Items", function(){
+			var items = {
+				query: function(){
+					console.log("query");
+					return [
+						{name:'Mary Contrary', id:'1'},
+						{name:'Jack Sprat', id:'2'},
+						{name:'Jill Hill', id:'3'}];
+				}
+			}
+			return items;
+		});
+
+		function StudentListController($scope, Items) {
+			$scope.students = Items.query();
+			$scope.selectix = -1;
+			$scope.insertTom = function(){
+				$scope.students.splice(1,0,{name:"name", id:"4"});
+			};
+			$scope.select = function(ix){
+				$scope.selectix = ix;
+			};
+		}
+	</script>
+</body>
+</html>

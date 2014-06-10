@@ -8,8 +8,8 @@
 <body>
 	<div ng-controller='StudentListController'>
 		<ul>
-			<li ng-repeat='student in students'>
-				<a href='/student/view/{{student.id}}'>{{student.name}}</a>
+			<li ng-repeat='student in students' ng-hide="student.hide">
+				<button ng-click="hide($index)" >{{student.name}}</button>
 			</li>
 		</ul>
 		<button ng-click="insertTom()">Insert</button>
@@ -23,6 +23,10 @@
 			$scope.students = students;
 			$scope.insertTom = function(){
 				$scope.students.splice(1,0,{name:"name", id:"4"});
+			};
+			$scope.hide = function(ix){
+				$scope.students[ix].hide = true;
+				console.log($scope.students);
 			};
 		}
 	</script>
