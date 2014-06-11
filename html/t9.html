@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base/>
+	<title>动态添加</title>
+	<script src="http://cdn.bootcss.com/angular.js/1.2.0rc3/angular.min.js"></script>
+</head>
+<body>
+	<center ng-app>
+		<div ng-controller='TControler'>
+			<div ng-repeat='field in fields()'>
+				<span style="display:inline-block; width:50px;">{{field}}</span>
+				<input for ng-model='model[field]'/>
+			</div>
+			<button ng-click='addfield()'>添加</button>
+			<button ng-click='showmodel()'>查看模型值</button>
+		</div>
+	</center>
+	<script type="text/javascript">
+		function TControler($scope) {
+			$scope.model = {name:'robin', age:20};
+			$scope.fields = function () {
+				var fields = [];
+				for(var f in $scope.model){
+					fields.push(f);
+				}
+				return fields;
+			};
+			$scope.addfield = function(){
+				var fdcount = $scope.fields().length;
+				$scope.model['Field'+fdcount] = fdcount;
+			};
+			$scope.showmodel = function(){
+				var msg = '';
+				for(var f in $scope.model){
+					msg = msg + f + ':' +$scope.model[f] + '\n';
+				}
+				alert(msg);
+				console.log($scope.model);
+			};
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<base/>
+	<title>Students</title>
+	<script src="../js/angular.min.js"></script>
+	<style type="text/css">
+		.selected {
+			background-color: lightgreen;
+		}
+	</style>
+</head>
+<body>
+	<div ng-controller='StudentListController'>
+		<div ng-repeat='student in students' ng-click='select($index)' ng-class="{selected: $index==selectix}">
+			{{student.name}}
+		</div>
+	</div>
+	<script type="text/javascript">
+		var students = [
+			{name:'Mary Contrary', id:'1'},
+			{name:'Jack Sprat', id:'2'},
+			{name:'Jill Hill', id:'3'}];
+		function StudentListController($scope) {
+			$scope.students = students;
+			$scope.selectix = -1;
+			$scope.insertTom = function(){
+				$scope.students.splice(1,0,{name:"name", id:"4"});
+			};
+			$scope.select = function(ix){
+				$scope.selectix = ix;
+			};
+		}
+	</script>
+</body>
+</html>

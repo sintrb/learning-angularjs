@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<base/>
+	<title>Students</title>
+	<script src="../js/angular.min.js"></script>
+</head>
+<body>
+	<div ng-controller='StudentListController'>
+		<ul>
+			<li ng-repeat='student in students' ng-hide="student.hide">
+				<button ng-click="hide($index)" >{{student.name}}</button>
+			</li>
+		</ul>
+		<button ng-click="insertTom()">Insert</button>
+	</div>
+	<script type="text/javascript">
+		var students = [
+			{name:'Mary Contrary', id:'1'},
+			{name:'Jack Sprat', id:'2'},
+			{name:'Jill Hill', id:'3'}];
+		function StudentListController($scope) {
+			$scope.students = students;
+			$scope.insertTom = function(){
+				$scope.students.splice(1,0,{name:"name", id:"4"});
+			};
+			$scope.hide = function(ix){
+				$scope.students[ix].hide = true;
+				console.log($scope.students);
+			};
+		}
+	</script>
+</body>
+</html>
