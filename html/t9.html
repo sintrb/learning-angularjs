@@ -10,7 +10,7 @@
 		<div ng-controller='TControler'>
 			<div ng-repeat='field in fields()'>
 				<span style="display:inline-block; width:50px;">{{field}}</span>
-				<input for ng-model='model[field]'/>
+				<input ng-model='model[field]'/>
 			</div>
 			<button ng-click='addfield()'>添加</button>
 			<button ng-click='showmodel()'>查看模型值</button>
