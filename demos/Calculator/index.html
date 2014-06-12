@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <!--
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js" data-semver="1.1.5"></script>
+    -->
+    <script src="../../js/angular.min.js" data-semver="1.1.5"></script>
+    
+  </head>
+
+  <body ng-app>
+    <div class="calc" ng-controller="Calculator">
+      <div id="screen" class="screen">{{scr}}</div>
+      <div class="button-board">
+        <div class="num-pad">
+          <div class="row">
+            <div class="btn" ng-click="onKey('7')">7</div>
+            <div class="btn" ng-click="onKey('8')">8</div>
+            <div class="btn" ng-click="onKey('9')">9</div>
+            <div class="btn op-btn" ng-click="onKey('=')">=</div>
+          </div>
+          <div class="row">
+            <div class="btn" ng-click="onKey('4')">4</div>
+            <div class="btn" ng-click="onKey('5')">5</div>
+            <div class="btn" ng-click="onKey('6')">6</div>
+            <div class="btn op-btn" ng-click="onKey('+')">+</div>
+          </div>
+          <div class="row">
+            <div class="btn" ng-click="onKey('1')">1</div>
+            <div class="btn" ng-click="onKey('2')">2</div>
+            <div class="btn" ng-click="onKey('3')">3</div>
+            <div class="btn op-btn" ng-click="onKey('-')">-</div>
+          </div>
+          <div class="row">
+            <div class="btn" ng-click="onKey('0')">0</div>
+            <div class="btn op-btn" ng-click="onKey('*')">*</div>
+            <div class="btn op-btn" ng-click="onKey('/')">/</div>
+            <div class="btn c-btn" ng-click="onKey('C')">C</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+  
+</html>
