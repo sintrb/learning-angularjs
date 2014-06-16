@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="../../js/angular.min.js" data-semver="1.1.5"></script>
+    <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+    <script src='https://cdn.firebase.com/libs/angularfire/0.7.0/angularfire.min.js'></script>  
+  </head>
+
+  <body ng-app="app">
+    <center ng-controller="chat">
+      <input type="text" ng-keypress="keypress($event)" ng-model="msg" placeholder="Input Message And Press ENTER" style="width:300px;">
+      <div>
+        <div ng-repeat="m in msgs track by $index">{{m}}</div>
+      </div>
+    </center>
+
+    <script src="app.js"></script>
+  </body>
+</html>
