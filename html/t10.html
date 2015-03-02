@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<base/>
+	<title>动态添加</title>
+	<script src="../js/angular.min.js"></script>
+	<script src="../js/angular-resource.min.js"></script>
+</head>
+<body>
+	<center ng-app="App">
+		<div ng-controller='MyCtrl'>
+			<input ng-model="val">
+			<button ng-click="save()">save</button>
+		</div>
+	</center>
+<script type="text/javascript">
+	var App = angular.module('App', ['ngResource'])
+							.factory('User', function($resource){
+								return $resource("http://xbase.sinaapp.com/app/val", {}, {
+									query: {
+										method: "GET",
+										params: {u: "t", p:'t'},
+									},
+									save: {
+										method: "POST",
+										params: {u: "t", p:'t'},
+									}
+								});
+							});
+	function MyCtrl($scope, User){  
+		$scope.val = User.query();
+
+		$scope.save = function(){
+			User.save();
+		}
+	} 
+
+</script>
+</body>
+</html>
